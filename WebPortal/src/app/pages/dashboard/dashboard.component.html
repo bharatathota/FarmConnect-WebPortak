@@ -1,0 +1,22 @@
+<div class="row">
+
+  <div class="col-md-9">
+    <div class="container">
+      <table class="table">
+        <tr>
+          <th>#</th>
+          <th>DocumentName</th>
+          <th>DocumentNumber</th>
+          <th>DocumentPrice</th>
+        </tr>
+        <tr *ngFor="let document of dashBoardResp" (click)="showTheDocumentDetails(document,i)" [class.active]="i == selectedRow">
+          <td><div><i class="fas fa-folder-open" style='font-size:18px;color:red'></i></div></td>
+          <td>{{document.docName}}</td>
+          <td>{{document.docNumber}}</td>
+          <td>{{document.price}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+</div>

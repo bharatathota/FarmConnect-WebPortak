@@ -1,0 +1,35 @@
+.container {
+    width: 600px;
+    box-shadow: -1px 4px 14px grey;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.demo img {
+    width: 80px;
+}
+.inputBox {
+    font-size: 14px;
+}
+.inputBox input {
+    padding-left: 28px;
+}
+.social {
+    border-bottom: 1px solid grey;   
+}
+.social .icon {
+    width: 86px;
+    margin: 0 auto; 
+    transform: translateY(11px);
+}
+
+@media (max-width:575px) {
+    .container {
+        width: 100%;
+        box-shadow: none;
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
+    }
+}
