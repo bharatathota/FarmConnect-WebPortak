@@ -8,11 +8,11 @@ import { map, tap } from 'rxjs/operators';
 })
 export class DashboardService {
 
-  public fetchDocumentList = '';
+  public fetchCategoriesList = 'categories';
   constructor(private httpService: HttpCallsService) { }
 
   getDocumentListByCategory(): Observable<any> {
-    return this.httpService.get<any>(this.fetchDocumentList, {}).pipe(
+    return this.httpService.get<any>(this.fetchCategoriesList, {}).pipe(
       tap(
         response => {
           return response;

@@ -1,0 +1,35 @@
+<app-main-header></app-main-header>
+<app-nav-bar></app-nav-bar>
+
+<select>
+  <option *ngFor="let cat of mainCategories" [ngValue]="mainCategory">
+        {{ cat }}
+  </option>
+</select>
+
+
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="container">
+      <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Product Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products | startsWith : mainCategory">
+          <td>{{product.productId}}</td>
+          <td>{{product.productName}}</td>
+          <td>{{product.price}}</td>
+          <td><img src="{{product.pictureUrl}}" alt="No Image Found"/></td>
+        </tr>
+  </tbody>
+</table>
+    </div>
+  </div>
+</div>
