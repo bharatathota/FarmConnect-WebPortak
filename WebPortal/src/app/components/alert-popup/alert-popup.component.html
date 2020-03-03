@@ -1,0 +1,14 @@
+<div class="popup-main"  [hidden]="!showPopup == true">
+  <div class="mask"></div>
+  <div class="popup col-xs-10 col-md-6 col-lg-4">
+    <header class="text-center">
+      {{header || 'Eazypay'}}<span class="pop-cls" (click)="closeError()">x</span>
+    </header>
+    <section class="text-center">
+      {{message || "Unable to process request now, please try later"}}
+      <div class="pop-footer text-center">
+        <button class="btn-primary" (click)="closeError()">OK</button> 
+      </div>
+    </section>
+  </div>
+</div>

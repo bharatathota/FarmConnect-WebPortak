@@ -1,0 +1,16 @@
+/* ****************** PopUp css **************** */
+.popup-main{position:fixed;width:100%;height:100%;background:transparent;left:0;top:0;overflow:auto;z-index:9999;}
+.mask{position:absolute;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.5;}
+.popup{position:absolute;top:50%;left:50%;height:auto;transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%);}
+.popup header{padding:10px 0;background:#e77817;color:#fff;font-size:18px;position:relative;border-top-left-radius:5px;border-top-right-radius:5px;}
+.popup section{padding:10px 5px;background:#fff;border-bottom-left-radius:5px;border-bottom-right-radius:5px;}
+.pop-cls{position:absolute;right:5px;width:25px;height:25px;border:2px solid #fff;border-radius:50%;line-height:18px;}
+.pop-footer{padding-top:10px;}
+.pop-footer button{padding:5px 10px;margin:0 3%;border-radius:5px;width:30%;}
+.pop-footer button.gcm-btn{width:55%;}
+.popup.help-pop{width:90%;height: 65%;overflow: hidden;border-radius: 5px;padding-bottom: 5px;}
+.popup.help-pop header{position: absolute;top: 0;width: 100%;height:50px;}
+.popup.help-pop header >h4{position: absolute;height: auto;left: 40px;right: 40px;margin: 0;transform: translateY(-50%);top: 50%;}
+.popup.help-pop section{position: absolute;top: 50px;bottom: 0px;height: auto;padding-bottom: 5px;overflow: auto;}
+.popup.help-pop section p,.popup.help-pop section h4,.popup.help-pop section h5{text-align:justify;}
+/* ****************** End of PopUp css *********** */
