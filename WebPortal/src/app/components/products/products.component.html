@@ -1,35 +1,96 @@
 <app-main-header></app-main-header>
 <app-nav-bar></app-nav-bar>
 
-<select>
+<!-- <select>
   <option *ngFor="let cat of mainCategories" [ngValue]="mainCategory">
         {{ cat }}
   </option>
-</select>
+</select> -->
 
 
 
 <div class="row">
   <div class="col-md-12">
     <div class="container">
-      <table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Product Id</th>
-      <th scope="col">Name</th>
-      <th scope="col">Price</th>
-      <th scope="col">Image</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of products | startsWith : mainCategory">
-          <td>{{product.productId}}</td>
-          <td>{{product.productName}}</td>
-          <td>{{product.price}}</td>
-          <td><img src="{{product.pictureUrl}}" alt="No Image Found"/></td>
-        </tr>
-  </tbody>
-</table>
+      <div class="buttonClass" *ngIf="showCategories">
+        <input style="float: right;" class="btn btn-primary" type="button" name="Add" value="Add" (click)="addNewCategory()">
+      </div>
+      <br>
+      <table class="table table-striped" *ngIf="showCategories">
+        <thead>
+          <tr>
+            <th scope="col">Product Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>{{product.productId}}</td>
+            <td>{{product.productName}}</td>
+            <td>{{product.price}}</td>
+            <td><img src="{{product.pictureUrl}}" alt="No Image Found" height="150px" width="150px"/></td>
+            <td><input type="button" class="btn btn-primary" value="Update" (click)="showUpdateProduct(product)"></td>
+            <td><input type="button" class="btn btn-danger" value="Delete" (click)="remoeveProduct(product)"></td>
+          </tr>
+          <tr *ngIf="products.length == 0">
+            <td colspan="4" >There are no records to show</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="showNewitem">
+        <div class="form-group">
+           <label for="sel2">Category</label>
+            <select class="form-control" id="sel2" [(ngModel)]="selectedCategory">
+              <option *ngFor ="let category of mainCategories" [ngValue]="category.categoryId">{{category.categoryName}}</option>
+            </select>
+
+           <label for="product" style="margin-top: 30px;">Product Name</label>
+           <input type="text" class="form-control" id="product" name="product"
+           aria-describedby="emailHelp" placeholder="Please Enter Product Name" [(ngModel)]="productName">
+
+           <label for="price" style="margin-top: 30px;">Price</label>
+           <input type="text" class="form-control" id="price" name="price"
+           aria-describedby="emailHelp" placeholder="Please Enter Price" [(ngModel)]="price">
+
+           <label for="minorder" style="margin-top: 30px;">Minimum Order</label>
+           <input type="text" class="form-control" id="minorder" name="minorder"
+           aria-describedby="emailHelp" placeholder="Please Minimum Order" [(ngModel)]="productMinimumOrder">
+
+
+           <div class="custom-file mb-3" style="margin-top: 30px;">
+             <input type="file" class="custom-file-input" accept="image/*" id="customFile" 
+              (change)="handleFileSelectProduct($event)">
+             <label class="custom-file-label" for="customFile">{{fileName}}</label>
+           </div>
+           
+        </div>
+        <button type="submit" class="btn btn-default" (click)="hideCreate()">Cancel</button>
+        <button type="submit" class="btn btn-primary submitBtn" (click)="saveProduct()">Submit</button>
+       </div>
+     
+     <div *ngIf="showUpdateItem">
+       <div class="form-group">
+          <label for="exampleInputEmail1">Update Category Name</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" name="category"
+          aria-describedby="emailHelp" placeholder="Please Enter Category Name" [(ngModel)]="updateProductName">
+
+          <label for="price" style="margin-top: 30px;">Price</label>
+           <input type="text" class="form-control" id="price" name="price"
+           aria-describedby="emailHelp" placeholder="Please Enter Price" [(ngModel)]="updateProductPrice">
+
+           <label for="minorder" style="margin-top: 30px;">Minimum Order</label>
+           <input type="text" class="form-control" id="minorder" name="minorder"
+           aria-describedby="emailHelp" placeholder="Please Minimum Order" [(ngModel)]="updateProductMinOrder">
+          
+       </div>
+       <button type="submit" class="btn btn-default" (click)="hideCreate()">Cancel</button>
+       <button type="submit" class="btn btn-primary submitBtn" (click)="updateProduct()">Submit</button>
+     </div>
     </div>
   </div>
 </div>

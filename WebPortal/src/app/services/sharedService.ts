@@ -1,14 +1,22 @@
 import {Injectable} from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class sharedService{
 
+  public dashboardRedirect: Observable<any>;
+  public redirectMessage : any;
   private categories = [];
+  private message = "";
   //currentMessage = this.messageSource.asObservable();
 
-  constructor() { }
+  constructor() {
+    this.dashboardRedirect = new Observable((data: any ) => {
+      this.redirectMessage = data;
+    })
+  }
 
   getCategories() {
     return this.categories;
@@ -16,6 +24,15 @@ export class sharedService{
 
   setCategories(cat: string[]) {
     this.categories = cat;
+  }
+
+  setMessage(data:any) {
+    this.message = data;
+    this.redirectMessage.next(data);
+  }
+
+  getMessage() {
+    return this.message;
   }
 
 

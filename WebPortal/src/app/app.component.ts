@@ -10,4 +10,7 @@ import {map} from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'File-tiger';
+  header = "header";
+  message = "message";
+  showPopup = false;
 }

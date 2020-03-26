@@ -119,3 +119,8 @@ table {
 .submitBtn {
   margin-left: 30px;
 }
+
+.updateBtn {
+    background-color: #2874f0;
+    color: #fff;
+}

@@ -14,6 +14,7 @@ import { MainFooterComponent } from './components/main-footer/main-footer.compon
 import { MainHeaderComponent } from './components/main-header/main-header.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AlertPopupComponent } from './components/alert-popup/alert-popup.component'
 
 import { startsWithPipe} from 'src/app/services/filter.pipe';
 
@@ -36,7 +37,8 @@ import { AuthGuard } from './guards/auth.guard';
     NavBarComponent,
     MainFooterComponent,
     ProductsComponent,
-    startsWithPipe
+    startsWithPipe,
+    AlertPopupComponent
 
   ],
   imports: [

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpCallsService } from 'src/app/services/http-calls.service';
+import { HttpCallsService } from '../../services/http-calls.service';
 import { Observable, from } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
+export class ProductsService {
 
   public fetchCategoriesList = 'categories';
   public crudOperations = 'crudOperations';
@@ -42,7 +42,7 @@ export class DashboardService {
 
   }
 
-  uploadCategoryImg(params: any): Observable<any> {
+  uploadProductImg(params: any): Observable<any> {
     return this.httpService.post<any>(this.uploadFile, params,'').pipe(
       tap(
         response => {
