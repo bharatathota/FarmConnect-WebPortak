@@ -33,7 +33,6 @@ export class ProductsComponent implements OnInit {
   constructor(private shared: sharedService, private prodServ: ProductsService,
               private appComp: AppComponent ) { 
                 this.shared.dashboardRedirect.subscribe((response: any) => {
-                  console.log("Response" + response);
                   if(response == "Product saved successfully") {
                     this.showNewitem = false;
                     this.showUpdateItem = false;
@@ -59,17 +58,14 @@ export class ProductsComponent implements OnInit {
  
   getProducts() {
     //this.mainCategory = this.categories[0].categoryName;
-    console.log("Main Categoryu" + this.mainCategory);
-    console.log("Categories " + JSON.stringify(this.categories));
     for (let category of this.categories) {
+        console.log("Final " + JSON.stringify(category.products));
         this.mainCategories.push(category);
         this.selectedCategory = this.mainCategories[0].categoryId;
-        console.log("Main Categories" + this.mainCategories);
         for(let product of category.products) {
           this.products.push(product);
         }
     }
-    console.log("Products" + JSON.stringify(this.products));
   }
 
   addNewCategory() {
@@ -121,12 +117,14 @@ export class ProductsComponent implements OnInit {
       "product": product
     }
 
-    console.log("params" + JSON.stringify(params));
-
+    
     this.prodServ.crudData(params).subscribe(data=>{
       if(data.status.toLowerCase() == 'success'){
-        console.log("Product Creation");
-        this.uploadFile(data.productId, data.message);
+        this.products = [];
+        this.shared.setMessage(data.message);
+        this.appComp.header = "Product Creation";
+        this.appComp.message = data.message;
+        this.appComp.showPopup = true;
 
       }
     });
@@ -139,8 +137,7 @@ export class ProductsComponent implements OnInit {
       "idType": "P"+productId
     }
 
-    console.log("Params" + JSON.stringify(params));
-
+    
     this.prodServ.uploadProductImg(params).subscribe(data=>{
       if(data.status.toLowerCase() == 'success'){
         this.products = [];
@@ -153,7 +150,6 @@ export class ProductsComponent implements OnInit {
   }
 
   showUpdateProduct (product: any){
-    console.log("Category" + JSON.stringify(product));
     this.showNewitem = false;
     this.showCategories = false;
     this.showUpdateItem = true;

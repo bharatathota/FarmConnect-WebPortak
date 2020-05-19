@@ -1,14 +1,6 @@
 <app-main-header></app-main-header>
 <app-nav-bar></app-nav-bar>
 
-<!-- <select>
-  <option *ngFor="let cat of mainCategories" [ngValue]="mainCategory">
-        {{ cat }}
-  </option>
-</select> -->
-
-
-
 <div class="row">
   <div class="col-md-12">
     <div class="container">
@@ -22,7 +14,7 @@
             <th scope="col">Product Id</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
-            <th scope="col">Image</th>
+            <!-- <th scope="col">Image</th> -->
             <th></th>
             <th></th>
           </tr>
@@ -32,7 +24,7 @@
             <td>{{product.productId}}</td>
             <td>{{product.productName}}</td>
             <td>{{product.price}}</td>
-            <td><img src="{{product.pictureUrl}}" alt="No Image Found" height="150px" width="150px"/></td>
+            <!-- <td><img src="{{product.pictureUrl}}" alt="No Image Found" height="150px" width="150px"/></td> -->
             <td><input type="button" class="btn btn-primary" value="Update" (click)="showUpdateProduct(product)"></td>
             <td><input type="button" class="btn btn-danger" value="Delete" (click)="remoeveProduct(product)"></td>
           </tr>
@@ -62,11 +54,11 @@
            aria-describedby="emailHelp" placeholder="Please Minimum Order" [(ngModel)]="productMinimumOrder">
 
 
-           <div class="custom-file mb-3" style="margin-top: 30px;">
+           <!-- <div class="custom-file mb-3" style="margin-top: 30px;">
              <input type="file" class="custom-file-input" accept="image/*" id="customFile" 
               (change)="handleFileSelectProduct($event)">
              <label class="custom-file-label" for="customFile">{{fileName}}</label>
-           </div>
+           </div> -->
            
         </div>
         <button type="submit" class="btn btn-default" (click)="hideCreate()">Cancel</button>

@@ -28,7 +28,6 @@ export class DashboardComponent implements OnInit {
               private shared: sharedService,
               private appComp: AppComponent) {
                 this.shared.dashboardRedirect.subscribe((response: any) => {
-                  console.log("Response" + response);
                   if(response == "Category saved successfully") {
                     this.showNewitem = false;
                     this.showUpdateItem = false;
@@ -56,7 +55,6 @@ export class DashboardComponent implements OnInit {
   }
 
   showUpdateCategory (category: any){
-    console.log("Category" + JSON.stringify(category));
     this.showNewitem = false;
     this.showCategories = false;
     this.showUpdateItem = true;
@@ -88,8 +86,6 @@ export class DashboardComponent implements OnInit {
       if(data.status.toLowerCase() == 'success'){
         this.categories = data.categories;
         this.shared.setCategories(this.categories);
-        console.log("Categories" + JSON.stringify(this.shared.getCategories()));
-        
       }
     });
   }
@@ -105,17 +101,14 @@ export class DashboardComponent implements OnInit {
       "category": category
     }
 
-    console.log("params" + JSON.stringify(params));
-
     this.dashboardService.crudData(params).subscribe(data=>{
       if(data.status.toLowerCase() == 'success'){
-        console.log("Category Creation");
-        // this.shared.setMessage(data.message);
-        // this.appComp.header = "Categort Creation";
-        // this.appComp.message = data.message;
-        // this.appComp.showPopup = true;
-        // this.categoryName = "";
-        this.uploadFile(data.categoryId, data.message);
+        this.shared.setMessage(data.message);
+        this.appComp.header = "Category Creation";
+        this.appComp.message = data.message;
+        this.appComp.showPopup = true;
+        this.categoryName = "";
+        //this.uploadFile(data.categoryId, data.message);
 
       }
     });
@@ -128,7 +121,6 @@ export class DashboardComponent implements OnInit {
       "idType": "C"+categoryId
     }
 
-    console.log("Params" + JSON.stringify(params));
 
     this.dashboardService.uploadCategoryImg(params).subscribe(data=>{
       if(data.status.toLowerCase() == 'success'){

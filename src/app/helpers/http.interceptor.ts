@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor,HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {sharedService} from 'src/app/services/sharedService';
 import {SessionStorageService} from 'ngx-webstorage';

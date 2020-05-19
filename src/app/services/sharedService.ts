@@ -9,6 +9,7 @@ export class sharedService{
   public dashboardRedirect: Observable<any>;
   public redirectMessage : any;
   private categories = [];
+  private products = [];
   private message = "";
   //currentMessage = this.messageSource.asObservable();
 
@@ -33,6 +34,14 @@ export class sharedService{
 
   getMessage() {
     return this.message;
+  }
+
+  getProducts() {
+    return this.getProducts;
+  }
+
+  setProducts(prod: string[]) {
+    this.products = prod;
   }
 
 
